@@ -1,0 +1,492 @@
+{
+ "anywhere": [
+  "ATH",
+  "FCO",
+  "LCA",
+  "BUD",
+  "PRG",
+  "BCN"
+ ],
+ "places": {
+  "TLV": {
+   "he": "תל אביב",
+   "country": "ישראל",
+   "aliases": [
+    "תל אביב",
+    "תל-אביב",
+    "ת\"א",
+    "נתב\"ג",
+    "בן גוריון",
+    "ישראל",
+    "tel aviv",
+    "israel"
+   ]
+  },
+  "ETM": {
+   "he": "אילת",
+   "country": "ישראל",
+   "aliases": [
+    "אילת",
+    "רמון",
+    "eilat"
+   ]
+  },
+  "ATH": {
+   "he": "אתונה",
+   "country": "יוון",
+   "aliases": [
+    "אתונה",
+    "athens",
+    "יוון"
+   ]
+  },
+  "SKG": {
+   "he": "סלוניקי",
+   "country": "יוון",
+   "aliases": [
+    "סלוניקי",
+    "תסלוניקי",
+    "thessaloniki"
+   ]
+  },
+  "RHO": {
+   "he": "רודוס",
+   "country": "יוון",
+   "aliases": [
+    "רודוס",
+    "rhodes"
+   ]
+  },
+  "HER": {
+   "he": "כרתים",
+   "country": "יוון",
+   "aliases": [
+    "כרתים",
+    "הרקליון",
+    "crete",
+    "heraklion"
+   ]
+  },
+  "JTR": {
+   "he": "סנטוריני",
+   "country": "יוון",
+   "aliases": [
+    "סנטוריני",
+    "santorini"
+   ]
+  },
+  "LCA": {
+   "he": "לרנקה",
+   "country": "קפריסין",
+   "aliases": [
+    "לרנקה",
+    "קפריסין",
+    "larnaca",
+    "cyprus"
+   ]
+  },
+  "PFO": {
+   "he": "פאפוס",
+   "country": "קפריסין",
+   "aliases": [
+    "פאפוס",
+    "paphos"
+   ]
+  },
+  "FCO": {
+   "he": "רומא",
+   "country": "איטליה",
+   "aliases": [
+    "רומא",
+    "rome",
+    "איטליה"
+   ]
+  },
+  "MXP": {
+   "he": "מילאנו",
+   "country": "איטליה",
+   "aliases": [
+    "מילאנו",
+    "milan"
+   ]
+  },
+  "VCE": {
+   "he": "ונציה",
+   "country": "איטליה",
+   "aliases": [
+    "ונציה",
+    "venice"
+   ]
+  },
+  "NAP": {
+   "he": "נאפולי",
+   "country": "איטליה",
+   "aliases": [
+    "נאפולי",
+    "naples"
+   ]
+  },
+  "BUD": {
+   "he": "בודפשט",
+   "country": "הונגריה",
+   "aliases": [
+    "בודפשט",
+    "budapest",
+    "הונגריה"
+   ]
+  },
+  "PRG": {
+   "he": "פראג",
+   "country": "צ'כיה",
+   "aliases": [
+    "פראג",
+    "prague",
+    "צ'כיה",
+    "צכיה",
+    "prag"
+   ]
+  },
+  "VIE": {
+   "he": "וינה",
+   "country": "אוסטריה",
+   "aliases": [
+    "וינה",
+    "vienna",
+    "אוסטריה"
+   ]
+  },
+  "BER": {
+   "he": "ברלין",
+   "country": "גרמניה",
+   "aliases": [
+    "ברלין",
+    "berlin",
+    "גרמניה"
+   ]
+  },
+  "MUC": {
+   "he": "מינכן",
+   "country": "גרמניה",
+   "aliases": [
+    "מינכן",
+    "munich"
+   ]
+  },
+  "FRA": {
+   "he": "פרנקפורט",
+   "country": "גרמניה",
+   "aliases": [
+    "פרנקפורט",
+    "frankfurt"
+   ]
+  },
+  "BCN": {
+   "he": "ברצלונה",
+   "country": "ספרד",
+   "aliases": [
+    "ברצלונה",
+    "barcelona",
+    "ספרד"
+   ]
+  },
+  "MAD": {
+   "he": "מדריד",
+   "country": "ספרד",
+   "aliases": [
+    "מדריד",
+    "madrid"
+   ]
+  },
+  "LIS": {
+   "he": "ליסבון",
+   "country": "פורטוגל",
+   "aliases": [
+    "ליסבון",
+    "lisbon",
+    "פורטוגל"
+   ]
+  },
+  "CDG": {
+   "he": "פריז",
+   "country": "צרפת",
+   "aliases": [
+    "פריז",
+    "פאריס",
+    "paris",
+    "צרפת"
+   ]
+  },
+  "NCE": {
+   "he": "ניס",
+   "country": "צרפת",
+   "aliases": [
+    "ניס",
+    "nice"
+   ]
+  },
+  "LTN": {
+   "he": "לונדון",
+   "country": "בריטניה",
+   "aliases": [
+    "לונדון לוטון",
+    "לוטון",
+    "luton"
+   ]
+  },
+  "LHR": {
+   "he": "לונדון",
+   "country": "בריטניה",
+   "aliases": [
+    "לונדון",
+    "הית'רו",
+    "london",
+    "heathrow",
+    "אנגליה",
+    "בריטניה"
+   ]
+  },
+  "AMS": {
+   "he": "אמסטרדם",
+   "country": "הולנד",
+   "aliases": [
+    "אמסטרדם",
+    "amsterdam",
+    "הולנד"
+   ]
+  },
+  "ZRH": {
+   "he": "ציריך",
+   "country": "שווייץ",
+   "aliases": [
+    "ציריך",
+    "zurich"
+   ]
+  },
+  "GVA": {
+   "he": "ז'נבה",
+   "country": "שווייץ",
+   "aliases": [
+    "ז'נבה",
+    "ג'נבה",
+    "geneva"
+   ]
+  },
+  "OTP": {
+   "he": "בוקרשט",
+   "country": "רומניה",
+   "aliases": [
+    "בוקרשט",
+    "bucharest",
+    "רומניה"
+   ]
+  },
+  "SOF": {
+   "he": "סופיה",
+   "country": "בולגריה",
+   "aliases": [
+    "סופיה",
+    "sofia",
+    "בולגריה"
+   ]
+  },
+  "BEG": {
+   "he": "בלגרד",
+   "country": "סרביה",
+   "aliases": [
+    "בלגרד",
+    "belgrade"
+   ]
+  },
+  "ZAG": {
+   "he": "זאגרב",
+   "country": "קרואטיה",
+   "aliases": [
+    "זאגרב",
+    "zagreb"
+   ]
+  },
+  "TIA": {
+   "he": "טירנה",
+   "country": "אלבניה",
+   "aliases": [
+    "טירנה",
+    "אלבניה",
+    "tirana"
+   ]
+  },
+  "TGD": {
+   "he": "פודגוריצה",
+   "country": "מונטנגרו",
+   "aliases": [
+    "פודגוריצה",
+    "מונטנגרו",
+    "podgorica"
+   ]
+  },
+  "KRK": {
+   "he": "קרקוב",
+   "country": "פולין",
+   "aliases": [
+    "קרקוב",
+    "krakow",
+    "פולין"
+   ]
+  },
+  "WAW": {
+   "he": "ורשה",
+   "country": "פולין",
+   "aliases": [
+    "ורשה",
+    "warsaw"
+   ]
+  },
+  "RIX": {
+   "he": "ריגה",
+   "country": "לטביה",
+   "aliases": [
+    "ריגה",
+    "riga"
+   ]
+  },
+  "VNO": {
+   "he": "וילנה",
+   "country": "ליטא",
+   "aliases": [
+    "וילנה",
+    "vilnius"
+   ]
+  },
+  "MLA": {
+   "he": "מלטה",
+   "country": "מלטה",
+   "aliases": [
+    "מלטה",
+    "malta"
+   ]
+  },
+  "TBS": {
+   "he": "טביליסי",
+   "country": "גאורגיה",
+   "aliases": [
+    "טביליסי",
+    "גאורגיה",
+    "גרוזיה",
+    "tbilisi"
+   ]
+  },
+  "BUS": {
+   "he": "בטומי",
+   "country": "גאורגיה",
+   "aliases": [
+    "בטומי",
+    "batumi"
+   ]
+  },
+  "GYD": {
+   "he": "באקו",
+   "country": "אזרבייג'ן",
+   "aliases": [
+    "באקו",
+    "baku"
+   ]
+  },
+  "DXB": {
+   "he": "דובאי",
+   "country": "איחוד האמירויות",
+   "aliases": [
+    "דובאי",
+    "dubai",
+    "איחוד האמירויות",
+    "האמירויות"
+   ]
+  },
+  "AUH": {
+   "he": "אבו דאבי",
+   "country": "איחוד האמירויות",
+   "aliases": [
+    "אבו דאבי",
+    "abu dhabi"
+   ]
+  },
+  "RAK": {
+   "he": "מרקש",
+   "country": "מרוקו",
+   "aliases": [
+    "מרקש",
+    "מרוקו",
+    "marrakech"
+   ]
+  },
+  "BKK": {
+   "he": "בנגקוק",
+   "country": "תאילנד",
+   "aliases": [
+    "בנגקוק",
+    "תאילנד",
+    "bangkok"
+   ]
+  },
+  "JFK": {
+   "he": "ניו יורק",
+   "country": "ארצות הברית",
+   "aliases": [
+    "ניו יורק",
+    "new york",
+    "nyc",
+    "ארצות הברית",
+    "ארה\"ב",
+    "אמריקה"
+   ]
+  },
+  "MIA": {
+   "he": "מיאמי",
+   "country": "ארצות הברית",
+   "aliases": [
+    "מיאמי",
+    "miami"
+   ]
+  },
+  "LAX": {
+   "he": "לוס אנג'לס",
+   "country": "ארצות הברית",
+   "aliases": [
+    "לוס אנג'לס",
+    "los angeles"
+   ]
+  },
+  "BOM": {
+   "he": "מומבאי",
+   "country": "הודו",
+   "aliases": [
+    "מומבאי",
+    "mumbai"
+   ]
+  },
+  "DEL": {
+   "he": "דלהי",
+   "country": "הודו",
+   "aliases": [
+    "דלהי",
+    "delhi"
+   ]
+  },
+  "HFA": {
+   "he": "חיפה",
+   "country": "ישראל",
+   "aliases": [
+    "חיפה",
+    "haifa"
+   ]
+  },
+  "NRT": {
+   "he": "טוקיו",
+   "country": "יפן",
+   "aliases": [
+    "טוקיו",
+    "יפן",
+    "tokyo",
+    "japan"
+   ]
+  }
+ }
+}

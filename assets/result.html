@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>צייד הטיסות · __TITLE__</title>
+<style>
+@font-face{font-family:R;src:url(data:font/woff2;base64,__FONT_HE__) format("woff2");unicode-range:U+0590-05FF,U+200C-2010,U+20AA,U+25CC,U+FB1D-FB4F}
+@font-face{font-family:R;src:url(data:font/woff2;base64,__FONT_LA__) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+2000-206F,U+2190-21FF,U+2212}
+:root{--ink:#0b1424;--mute:#5b6b86;--line:#dfe6f2;--fire:#ff4d12;--hot:#ff8a1f;--warm:#ffc24d;--sky:#8fc3ef;--pale:#cfdbee;--a:#77CEBF;--b:#7C9CF0}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{font-family:R,system-ui,-apple-system,"Segoe UI",Arial,sans-serif;color:var(--ink);background:linear-gradient(180deg,#fff6ea 0%,#fdf9f3 30%,#eef4ff 100%);min-height:100vh}
+.wrap{max-width:1500px;margin:0 auto;padding:34px 34px 60px}
+.top{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.brand{font-weight:700;font-size:20px;letter-spacing:.2px;display:flex;align-items:center;gap:10px}
+.brand i{width:12px;height:12px;border-radius:50%;background:var(--fire);box-shadow:0 0 0 5px rgba(255,77,18,.15)}
+.btns{display:flex;gap:10px}
+.btn{font:inherit;font-size:16px;font-weight:700;border:2px solid var(--ink);background:#fff;color:var(--ink);border-radius:999px;padding:9px 18px;cursor:pointer}
+.btn:hover{background:var(--ink);color:#fff}
+.btn:focus-visible,.cta a:focus-visible{outline:3px solid var(--b);outline-offset:3px}
+.hero{display:grid;grid-template-columns:1fr auto;gap:24px;align-items:end;margin:26px 0 22px}
+.hero h1{font-size:clamp(34px,5.4vw,78px);line-height:1.02;margin:0;font-weight:800;letter-spacing:-.5px}
+.hero .sub{font-size:clamp(18px,1.9vw,27px);color:var(--mute);margin-top:12px}
+.hero .sub b{color:var(--ink)}
+.price{text-align:left;direction:rtl}
+.price .num{font-size:clamp(64px,9vw,150px);font-weight:800;line-height:.9;font-variant-numeric:tabular-nums;background:linear-gradient(100deg,var(--fire),var(--hot) 60%,var(--warm));-webkit-background-clip:text;background-clip:text;color:transparent;white-space:nowrap}
+.price .num .cu{font-size:.5em}
+.price .cap{font-size:18px;color:var(--mute);margin-top:6px;text-align:left}
+.save{display:inline-flex;align-items:center;gap:10px;margin-top:16px;background:var(--ink);color:#fff;border-radius:16px;padding:12px 20px;font-size:clamp(17px,1.7vw,24px);font-weight:700}
+.save b{color:var(--warm)}
+.go{display:flex;width:fit-content;align-items:center;gap:12px;margin-top:14px;text-decoration:none;color:#fff;font-weight:800;font-size:clamp(17px,1.7vw,24px);border-radius:16px;padding:12px 22px;background:linear-gradient(100deg,var(--fire),var(--hot));box-shadow:0 12px 30px -12px rgba(255,77,18,.7)}
+.go:hover{filter:brightness(1.06)}
+.go:focus-visible{outline:3px solid var(--b);outline-offset:3px}
+.go small{font-weight:600;font-size:.7em;opacity:.92}
+.stage{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);gap:26px;align-items:stretch}
+.card{background:#fff;border:1px solid var(--line);border-radius:26px;box-shadow:0 18px 50px -24px rgba(20,40,90,.25);padding:22px 24px}
+.card h2{font-size:20px;margin:0 0 4px;font-weight:800}
+.card .hint{font-size:15px;color:var(--mute);margin:0 0 14px}
+.cal{display:grid;grid-template-columns:62px repeat(31,minmax(0,1fr));gap:4px;align-items:center}
+.cal .m{font-size:13px;font-weight:700;color:var(--mute);white-space:nowrap}
+.c{aspect-ratio:1;border-radius:5px;background:#eef2f8;position:relative;transform:scale(.25);opacity:0;transition:transform .35s cubic-bezier(.2,1.6,.4,1),opacity .25s}
+.c.on{transform:scale(1);opacity:1}
+.c.dot.on{transform:scale(.42)}
+.c.fut{background:repeating-linear-gradient(135deg,#e7ecf4 0 3px,#f6f8fb 3px 6px)}
+.c.top{z-index:2}
+.c.top.lit{animation:burn 1.6s ease-in-out 3;box-shadow:0 0 8px 3px rgba(255,77,18,.7),0 0 22px 8px rgba(255,138,31,.45);transform:scale(1.35)}
+.c.top b{position:absolute;inset:0;display:grid;place-items:center;font-size:11px;color:#fff;font-weight:800}
+@keyframes burn{0%,100%{box-shadow:0 0 6px 2px rgba(255,77,18,.65),0 0 18px 6px rgba(255,138,31,.4)}50%{box-shadow:0 0 10px 4px rgba(255,77,18,.85),0 0 30px 12px rgba(255,194,77,.5)}}
+.legend{display:flex;gap:14px;flex-wrap:wrap;align-items:center;margin-top:16px;font-size:14px;color:var(--mute)}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.legend i{width:14px;height:14px;border-radius:4px;display:inline-block}
+.globe{display:flex;flex-direction:column}
+.globe canvas{width:100%;flex:1;min-height:320px;display:block}
+.route{display:flex;justify-content:space-between;font-size:18px;font-weight:700;margin-top:8px}
+.route small{display:block;font-size:13px;color:var(--mute);font-weight:400}
+h3{font-size:24px;margin:36px 0 14px;font-weight:800}
+.tix{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px}
+.tk{background:#fff;border:1px solid var(--line);border-radius:22px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 14px 40px -26px rgba(20,40,90,.35)}
+.tk .hd{display:flex;justify-content:space-between;align-items:center;padding:16px 18px 10px}
+.tk .rk{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;font-weight:800;color:#fff;background:var(--hot)}
+.tk:first-child .rk{background:var(--fire)}
+.tk .pr{font-size:34px;font-weight:800;font-variant-numeric:tabular-nums}
+.tk .dt{padding:0 18px;font-size:19px;font-weight:700}
+.tk .fl{padding:8px 18px 0;font-size:14px;color:var(--mute);line-height:1.5}
+.tk .perf{border-top:2px dashed var(--line);margin:14px 0 0;position:relative}
+.cta{display:flex;gap:8px;padding:14px 18px 16px;flex-wrap:wrap;margin-top:auto}
+.cta a{font-weight:700;font-size:15px;text-decoration:none;border-radius:999px;padding:9px 16px}
+.cta a.g{background:var(--ink);color:#fff}
+.cta a.k{border:2px solid var(--line);color:var(--ink)}
+.months{display:grid;grid-template-columns:repeat(13,1fr);gap:8px;align-items:end;height:200px}
+.mb{display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;gap:6px}
+.mb .bar{width:100%;border-radius:10px 10px 4px 4px;background:linear-gradient(180deg,var(--sky),#cfe2f7);height:0;transition:height .8s cubic-bezier(.2,.9,.3,1)}
+.mb.best .bar{background:linear-gradient(180deg,var(--fire),var(--warm))}
+.mb .v{font-size:13px;font-weight:700;font-variant-numeric:tabular-nums}
+.mb .l{font-size:12px;color:var(--mute)}
+.dests{display:grid;gap:8px}
+.dr{display:grid;grid-template-columns:120px 1fr 90px;gap:12px;align-items:center;font-size:16px}
+.dr .bb{height:16px;border-radius:8px;background:var(--sky)}
+.dr:first-child .bb{background:linear-gradient(90deg,var(--warm),var(--fire))}
+.dr .pp{font-weight:800;text-align:left;font-variant-numeric:tabular-nums}
+.foot{margin-top:34px;font-size:15px;color:var(--mute);line-height:1.6;border-top:1px solid var(--line);padding-top:18px}
+.foot b{color:var(--ink)}
+body.poster .wrap{max-width:none;padding:24px}
+body.poster .go,body.poster .tix,body.poster h3,body.poster .monthsC,body.poster .destsC,body.poster .foot,body.poster .btns .x{display:none}
+@media (max-width:900px){.wrap{padding:20px 14px 40px}.hero{grid-template-columns:1fr}.price,.price .num .cu{font-size:.5em}
+.price .cap{text-align:right}.stage{grid-template-columns:1fr}.go small{display:none}.cal{grid-template-columns:44px repeat(31,minmax(0,1fr));gap:2px}.cal .m{font-size:10px}.c{border-radius:3px}.c.top b{font-size:8px}.months{grid-template-columns:repeat(13,minmax(0,1fr));gap:3px;height:160px}.mb .v{font-size:10px}.mb .l{font-size:9px}.globe canvas{min-height:260px}.dr{grid-template-columns:90px 1fr 70px;font-size:14px}}
+@media (prefers-reduced-motion:reduce){.c,.mb .bar{transition:none}.c.top.lit{animation:none;box-shadow:0 0 0 3px var(--fire)}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div class="brand"><i></i>צייד הטיסות</div>
+    <div class="btns"><button class="btn" id="replay">▶ שוב</button><button class="btn x" id="poster">📸 מצב צילום</button></div>
+  </header>
+  <main>
+  <section class="hero">
+    <div>
+      <h1 id="h1"></h1>
+      <div class="sub" id="sub"></div>
+      <div class="save" id="save"></div><a class="go" id="go" target="_blank" rel="noopener"></a>
+    </div>
+    <div class="price"><div class="num" id="num"></div><div class="cap" id="cap"></div></div>
+  </section>
+  <section class="stage">
+    <div class="card"><h2 id="calT"></h2><p class="hint" id="calH"></p><div class="cal" id="cal" role="img"></div>
+      <div class="legend" id="legend"></div></div>
+    <div class="card globe"><h2>המסלול</h2><canvas id="gl" aria-hidden="true"></canvas><div class="route" id="route"></div></div>
+  </section>
+  <h3>התאריכים הכי זולים</h3>
+  <div class="tix" id="tix"></div>
+  <div class="destsC" id="destsC" hidden><h3 id="destsT"></h3><div class="card"><div class="dests" id="dests"></div></div></div>
+  <div class="monthsC"><h3>הכי זול בכל חודש</h3><div class="card"><div class="months" id="months"></div></div></div>
+  </main>
+  <footer class="foot" id="foot"></footer>
+</div>
+<script>
+const R=/*__DATA__*/null;
+const LAND=/*__LAND__*/[];
+const MONTHS=["ינואר","פברואר","מרץ","אפריל","מאי","יוני","יולי","אוגוסט","ספטמבר","אוקטובר","נובמבר","דצמבר"];
+const DAYS=["ראשון","שני","שלישי","רביעי","חמישי","שישי","שבת"];
+const $=id=>document.getElementById(id);
+const nis=v=>Math.round(v).toLocaleString("he-IL")+" ₪";
+const dd=s=>{const d=new Date(s+"T12:00:00");return DAYS[d.getDay()]+" "+d.getDate()+"."+(d.getMonth()+1)};
+const W=R.winner,Q=R.query,T=R.top;
+document.title="צייד הטיסות · "+W.name;
+$("h1").textContent=(Q.anywhere?"הכי זול לטוס עכשיו: ":"")+Q.origin_name+" ← "+W.name;
+$("sub").innerHTML="<b>"+T[0].label+"</b> · "+T[0].nights+" לילות"+(Q.depart_he.length?" · יציאה ב"+Q.depart_he.join("/"):"")+(Q.return_he.length?", חזרה ב"+Q.return_he.join("/"):"");
+$("save").innerHTML="חוסכים <b>"+nis(W.saving_vs_avg)+"</b> מול הממוצע לאותם ימים";
+$("go").href=T[0].links.google;
+$("go").innerHTML="לטיסה הזולה ב-Google Flights <small>(התאריכים כבר מסומנים)</small> ←";
+$("cap").textContent="הלוך-חזור, "+(Q.adults>1?"ל-"+Q.adults+" נוסעים":"למבוגר אחד");
+$("calT").textContent="השנה הקרובה, יום אחרי יום";
+$("calH").textContent="כל משבצת היא יום יציאה. ככל שהיא בוערת יותר, הטיסה זולה יותר. משבצת מלאה = מתאים לימים שביקשת.";
+// --- לוח 365 יום ---
+const priced=R.calendar.filter(c=>c.p!=null).map(c=>c.p).sort((a,b)=>a-b);
+const q=p=>{let i=0;while(i<priced.length&&priced[i]<p)i++;return i/Math.max(1,priced.length-1)};
+const col=p=>{const x=q(p);return x<=.08?"var(--fire)":x<=.25?"var(--hot)":x<=.5?"var(--warm)":x<=.75?"var(--sky)":"var(--pale)"};
+const topIdx=new Map(T.map((t,i)=>[t.out,i+1]));
+const cal=$("cal"),cells=[];
+let curM=null;
+R.calendar.forEach(c=>{
+  const d=new Date(c.d+"T12:00:00"),key=d.getFullYear()+"-"+d.getMonth();
+  if(key!==curM){curM=key;const m=document.createElement("div");m.className="m";m.textContent=MONTHS[d.getMonth()]+(d.getMonth()===0||cells.length===0?" "+String(d.getFullYear()).slice(2):"");cal.appendChild(m);
+    for(let k=1;k<d.getDate();k++)cal.appendChild(document.createElement("span"));}
+  const e=document.createElement("div");e.className="c";
+  if(c.future)e.classList.add("fut");
+  else if(c.p!=null){e.style.background=col(c.p);if(!c.ok)e.classList.add("dot");e.title=dd(c.d)+" · "+nis(c.p);}
+  if(topIdx.has(c.d)){e.classList.add("top");e.innerHTML="<b>"+topIdx.get(c.d)+"</b>";}
+  cal.appendChild(e);cells.push(e);
+  const nx=new Date(d);nx.setDate(d.getDate()+1);
+  if(nx.getMonth()!==d.getMonth()){for(let k=d.getDate();k<31;k++)cal.appendChild(document.createElement("span"));}
+});
+cal.setAttribute("aria-label","לוח מחירים לשנה הקרובה. הזול ביותר: "+T[0].label+", "+nis(T[0].price));
+$("legend").innerHTML=[["var(--fire)","הכי זול"],["var(--hot)","זול"],["var(--warm)","בינוני"],["var(--sky)","יקר"],["var(--pale)","הכי יקר"]].map(x=>'<span><i style="background:'+x[0]+'"></i>'+x[1]+'</span>').join("")+'<span><i class="c fut on" style="transform:none;opacity:1"></i>עוד לא במכירה</span>';
+// --- כרטיסים ---
+const fl=(a,lbl)=>a&&a.length?lbl+": "+a[0].airline+", יוצאת "+a[0].dep+", "+(a[0].stops?(a[0].stops===1?"עצירה אחת":a[0].stops+" עצירות"):"ישירה")+"<br>":"";
+$("tix").innerHTML=T.map((t,i)=>'<article class="tk"><div class="hd"><div class="rk">'+(i+1)+'</div><div class="pr">'+nis(t.price)+'</div></div><div class="dt">'+t.label+'</div><div class="fl">'+fl(t.out_flights,"הלוך")+fl(t.back_flights,"חזור")+t.nights+' לילות</div><div class="perf"></div><div class="cta"><a class="g" target="_blank" rel="noopener" href="'+t.links.google+'">לטיסה בגוגל</a><a class="k" target="_blank" rel="noopener" href="'+t.links.kayak+'">השוואה בקייאק</a></div></article>').join("");
+// --- חודשים ---
+const ms=Object.entries(R.months),mx=Math.max(...ms.map(m=>m[1].price)),mn=Math.min(...ms.map(m=>m[1].price));
+$("months").style.gridTemplateColumns="repeat("+ms.length+",minmax(0,1fr))";
+$("months").innerHTML=ms.map(([k,v])=>'<div class="mb'+(v.price===mn?" best":"")+'" title="'+dd(v.out)+'"><div class="v">'+Math.round(v.price)+'</div><div class="bar" data-h="'+(20+80*v.price/mx)+'"></div><div class="l">'+MONTHS[+k.slice(5)-1].slice(0,3)+'</div></div>').join("");
+// --- יעדים ---
+if(R.destinations.length>1){$("destsC").hidden=false;$("destsT").textContent=R.destinations.length+" יעדים, מהזול ליקר";
+  const dm=Math.max(...R.destinations.map(d=>d.best.price)),dn=Math.min(...R.destinations.map(d=>d.best.price));
+  $("dests").innerHTML=R.destinations.map(d=>'<div class="dr"><div>'+d.name+'</div><div class="bb" style="width:'+(25+75*(d.best.price-dn)/Math.max(1,dm-dn))+'%"></div><div class="pp">'+nis(d.best.price)+'</div></div>').join("");}
+$("route").innerHTML="<div>"+Q.origin_name+"<small>"+Q.origin+"</small></div><div style='text-align:left'>"+W.name+"<small>"+W.code+(W.country?" · "+W.country:"")+"</small></div>";
+const ch=new Date(R.checked_at);
+$("foot").innerHTML="<b>נבדק "+ch.toLocaleDateString("he-IL")+" בשעה "+ch.toLocaleTimeString("he-IL",{hour:"2-digit",minute:"2-digit"})+"</b> · נסרקו "+R.scanned_days+" ימי יציאה"+(R.horizon?" עד "+dd(R.horizon)+", היום האחרון שכבר נמכר":"")+". ממוצע לאותם ימים: "+nis(W.avg)+", היקר ביותר: "+nis(W.max)+".<br>"+(R.partial?"<b>הסריקה חלקית:</b> גוגל ביקש הפסקה באמצע, אז חלק מהשנה לא נבדק.<br>":"")+R.disclaimer+"<br>המקור: לוח המחירים הציבורי של Google Flights. מפה: Natural Earth.";
+// --- גלובוס ---
+const cv=$("gl"),cx=cv.getContext("2d");let DPR=1,GW=0,GH=0;
+const rad=x=>x*Math.PI/180;
+const o=R.origin_geo,dests=Object.entries(R.dest_geo);
+function vec(lat,lon){lat=rad(lat);lon=rad(lon);return[Math.cos(lat)*Math.cos(lon),Math.cos(lat)*Math.sin(lon),Math.sin(lat)]}
+function toLL(v){const r=Math.hypot(...v);return[Math.asin(v[2]/r)*180/Math.PI,Math.atan2(v[1],v[0])*180/Math.PI]}
+function slerp(a,b,t){const d=Math.acos(Math.min(1,a[0]*b[0]+a[1]*b[1]+a[2]*b[2]));if(d<1e-6)return a;const s=Math.sin(d),k1=Math.sin((1-t)*d)/s,k2=Math.sin(t*d)/s;return[a[0]*k1+b[0]*k2,a[1]*k1+b[1]*k2,a[2]*k1+b[2]*k2]}
+const wv=vec(...R.dest_geo[W.code]),ov=vec(...o);
+let span=0;dests.forEach(([c,g])=>{const v=vec(...g);span=Math.max(span,Math.acos(Math.min(1,v[0]*ov[0]+v[1]*ov[1]+v[2]*ov[2])))});
+const mid=toLL(slerp(ov,wv,.5));
+let lam0=rad(mid[1]),phi0=rad(mid[0]-8),zoom=Math.min(3.2,Math.max(1.05,1.25/Math.max(span,.12)));
+function proj(lat,lon,alt=0){lat=rad(lat);lon=rad(lon);const cc=Math.sin(phi0)*Math.sin(lat)+Math.cos(phi0)*Math.cos(lat)*Math.cos(lon-lam0);
+  let x=Math.cos(lat)*Math.sin(lon-lam0),y=Math.cos(phi0)*Math.sin(lat)-Math.sin(phi0)*Math.cos(lat)*Math.cos(lon-lam0);
+  const r=GR*(1+alt);if(cc<0){const n=Math.hypot(x,y)||1;x/=n;y/=n;return[GX+x*GR,GY-y*GR,false]}return[GX+x*r,GY-y*r,true]}
+let GR=0,GX=0,GY=0,arcT=0,t0=0;
+function size(){DPR=Math.min(2,window.devicePixelRatio||1);const r=cv.getBoundingClientRect();GW=r.width;GH=Math.max(260,r.height);cv.width=GW*DPR;cv.height=GH*DPR;cx.setTransform(DPR,0,0,DPR,0,0);
+  GR=Math.min(GW,GH)*.46*zoom;GX=GW/2;GY=GH/2+GR*Math.sin(rad(8))*.2}
+function draw(now){
+  cx.clearRect(0,0,GW,GH);
+  const g=cx.createRadialGradient(GX-GR*.3,GY-GR*.4,GR*.1,GX,GY,GR);g.addColorStop(0,"#d9ecff");g.addColorStop(1,"#9cc7f2");
+  cx.save();cx.beginPath();cx.arc(GX,GY,GR,0,7);cx.fillStyle=g;cx.fill();cx.clip();
+  cx.fillStyle="#fffdf8";cx.strokeStyle="#7fb1e3";cx.lineWidth=1;
+  LAND.forEach(poly=>{let vis=false;cx.beginPath();poly.forEach((p,i)=>{const s=proj(p[1],p[0]);if(s[2])vis=true;i?cx.lineTo(s[0],s[1]):cx.moveTo(s[0],s[1])});if(vis){cx.closePath();cx.fill();cx.stroke()}});
+  cx.restore();
+  cx.beginPath();cx.arc(GX,GY,GR,0,7);cx.strokeStyle="rgba(11,20,36,.15)";cx.lineWidth=2;cx.stroke();
+  const ease=x=>1-Math.pow(1-x,3);
+  dests.forEach(([c,gg])=>{const best=c===W.code,v=vec(...gg),d=Math.acos(Math.min(1,v[0]*ov[0]+v[1]*ov[1]+v[2]*ov[2])),h=Math.min(.35,.12+d*.5);
+    const k=ease(Math.min(1,arcT*(best?1:1.3)));cx.beginPath();
+    for(let i=0;i<=60*k;i++){const t=i/60,ll=toLL(slerp(ov,v,t)),s=proj(ll[0],ll[1],Math.sin(Math.PI*t)*h*.35);i?cx.lineTo(s[0],s[1]):cx.moveTo(s[0],s[1])}
+    cx.lineCap="round";if(best){cx.shadowColor="rgba(255,77,18,.6)";cx.shadowBlur=18;cx.strokeStyle="#ff4d12";cx.lineWidth=5}else{cx.shadowBlur=0;cx.strokeStyle="rgba(11,20,36,.22)";cx.lineWidth=2}
+    cx.stroke();cx.shadowBlur=0;
+    if(best&&k>0&&k<1){const t=k,ll=toLL(slerp(ov,v,t)),s=proj(ll[0],ll[1],Math.sin(Math.PI*t)*h*.35);cx.beginPath();cx.arc(s[0],s[1],7,0,7);cx.fillStyle="#0b1424";cx.fill()}
+    const e=proj(gg[0],gg[1]);cx.beginPath();cx.arc(e[0],e[1],best?8:4,0,7);cx.fillStyle=best?"#ff4d12":"#0b1424";cx.fill();
+    if(best){cx.beginPath();cx.arc(e[0],e[1],8+10*(1+Math.sin(now/260))/2,0,7);cx.strokeStyle="rgba(255,77,18,.5)";cx.lineWidth=2;cx.stroke()}});
+  const s=proj(o[0],o[1]);cx.beginPath();cx.arc(s[0],s[1],7,0,7);cx.fillStyle="#0b1424";cx.fill();cx.strokeStyle="#fff";cx.lineWidth=3;cx.stroke();
+  const lbl=(t,p,al)=>{cx.font="700 15px R,system-ui";cx.textAlign=al;cx.lineWidth=5;cx.strokeStyle="#fff";cx.strokeText(t,p[0],p[1]-14);cx.fillStyle="#0b1424";cx.fillText(t,p[0],p[1]-14)};
+  lbl(Q.origin_name,s,"center");const we=proj(...R.dest_geo[W.code]);if(arcT>.95)lbl(W.name,we,"center");
+}
+function loop(now){if(!t0)t0=now;const dt=(now-t0)/1000;arcT=Math.max(0,Math.min(1,(dt-2.2)/1.6));lam0+=0;draw(now);requestAnimationFrame(loop)}
+// --- אנימציה ---
+let timers=[];
+function play(){timers.forEach(clearTimeout);timers=[];cells.forEach(c=>c.classList.remove("on","lit"));document.querySelectorAll(".mb .bar").forEach(b=>b.style.height="0");t0=0;
+  const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches,step=reduce?0:5.2;
+  cells.forEach((c,i)=>timers.push(setTimeout(()=>c.classList.add("on"),200+i*step)));
+  const end=200+cells.length*step;
+  timers.push(setTimeout(()=>cells.filter(c=>c.classList.contains("top")).forEach(c=>c.classList.add("lit")),end+150));
+  timers.push(setTimeout(()=>document.querySelectorAll(".mb .bar").forEach(b=>b.style.height=b.dataset.h+"%"),end+300));
+  const num=$("num"),from=W.max,to=T[0].price,st=performance.now(),dur=reduce?1:end+400;
+  (function tick(n){const k=Math.min(1,(n-st)/dur),e=1-Math.pow(1-k,3);num.innerHTML=Math.round(from+(to-from)*e).toLocaleString('he-IL')+'<span class="cu"> ₪</span>';if(k<1)requestAnimationFrame(tick)})(st);}
+$("replay").onclick=play;
+$("poster").onclick=()=>{document.body.classList.toggle("poster");$("poster").textContent=document.body.classList.contains("poster")?"✕ יציאה ממצב צילום":"📸 מצב צילום";size()};
+addEventListener("resize",size);size();play();requestAnimationFrame(loop);
+</script>
+</body>
+</html>
