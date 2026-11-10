@@ -14,6 +14,7 @@ import argparse
 import json
 import statistics
 import sys
+import unicodedata
 import webbrowser
 from datetime import date, datetime, timedelta
 from pathlib import Path
@@ -56,8 +57,13 @@ def resolve(name: str, places: dict, airports: dict, role: str = "יעד") -> st
         for code, info in places["places"].items():
             if c in [a.lower().replace("-", " ") for a in info["aliases"]] or c == info["he"]:
                 return code
-    ex = "TLV" if role == "נקודת יציאה" else "ATH"
-    sys.exit(f"לא מכיר את \"{name}\" בתור {role}. אפשר לכתוב שם עיר אחר, או קוד שדה תעופה בן 3 אותיות באנגלית (למשל {ex}).")
+    # כל עיר בעולם בשמה באנגלית: לפי רשימת שדות התעופה (OurAirports)
+    plain = lambda x: "".join(ch for ch in unicodedata.normalize("NFKD", x) if not unicodedata.combining(ch))
+    hits = [code for code, a in airports.items() if plain(a[2].lower().replace("-", " ")) == plain(n)]
+    if hits:
+        return hits[0]
+    ex = "TLV" if role == "נקודת יציאה" else "BKK"
+    sys.exit(f"לא מכיר את \"{name}\" בתור {role}. כתוב את שם העיר באנגלית, או את קוד שדה התעופה הראשי שלה, 3 אותיות (למשל {ex}).")
 
 
 def parse_days(text: str | None) -> set[int]:
@@ -139,7 +145,7 @@ def scan(origin, dests, nights, args, cache_dir):
                     partial = True
                     break
                 try:
-                    got, last = gf.calendar_year(origin, d, n, args.adults, args.stops, log=say)
+                    got, last = gf.calendar_year(origin, d, n, args.adults, args.stops, log=say, cache=cache_dir)
                 except gf.Blocked as e:
                     say(f"  גוגל ביקש הפסקה. ממשיך עם מה שכבר נסרק ({len(e.partial)} תאריכים).")
                     for r in e.partial:
@@ -160,6 +166,7 @@ def main():
     ap = argparse.ArgumentParser(description="צייד הטיסות")
     ap.add_argument("--from", dest="origin", default="TLV")
     ap.add_argument("--to", required=True, help='יעד, כמה יעדים מופרדים בפסיק, או "anywhere" / "לאן שזול"')
+    ap.add_argument("--name", help="איך לקרוא ליעד בדף, בעברית (למשל: בנגקוק). רק כשיש יעד אחד")
     ap.add_argument("--nights", help="לילות: 4 או 3-5 או 4,6")
     ap.add_argument("--days", help="ימים כולל יום היציאה והחזרה: 5 = 4 לילות")
     ap.add_argument("--depart", help="ימי יציאה: חמישי,שישי")
@@ -188,7 +195,8 @@ def main():
         ret = {r for r in ret if any((d + n) % 7 == r for d in dep for n in nights)} or ret
 
     out = Path(args.out).expanduser()
-    name = lambda c: places["places"].get(c, {}).get("he") or airports.get(c, [0, 0, c])[2]
+    name = lambda c: (args.name.strip() if args.name and len(dests) == 1 and c == dests[0] else None) \
+        or places["places"].get(c, {}).get("he") or airports.get(c, [0, 0, c])[2]
     say(f"הבנתי: מ{name(origin)} אל {str(len(dests)) + ' יעדים פופולריים' if anywhere else ', '.join(name(d) for d in dests)}, "
         f"{' או '.join(str(n) for n in nights)} לילות"
         + (f", יציאה ב{'/'.join(DAYS_HE[d] for d in sorted(dep, key=IL))}" if dep else "")
@@ -325,7 +333,7 @@ def main():
         say("שימו לב: הסריקה חלקית, גוגל ביקש הפסקה באמצע. התאריכים שלמעלה הם הזולים מתוך מה שנסרק." if blocked
             else "שימו לב: הסריקה חלקית, חלק מהיעדים או מהחודשים לא נבדקו.")
         if blocked:
-            say("כדי להשלים: מחכים 30 דקות ומריצים שוב. מה שנסרק עד ההפסקה לא נשמר, אז ההרצה הבאה מתחילה מחדש.")
+            say("כדי להשלים: מחכים 20-30 דקות ומריצים שוב את אותה פקודה. מה שכבר נסרק נשמר, וההרצה הבאה ממשיכה מאותה נקודה.")
     say(result["disclaimer"])
     say(f"\nהדף: {page}")
     if args.open:

@@ -17,6 +17,7 @@ import urllib.error
 import urllib.parse
 import urllib.request
 from datetime import date, datetime, timedelta
+from pathlib import Path
 
 BASE = "https://www.google.com/_/FlightsFrontendUi/data/travel.frontend.flights.FlightsFrontendService/"
 UA = ("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 "
@@ -139,8 +140,11 @@ def calendar_chunk(o: str, d: str, start: date, end: date, nights: int, adults: 
 
 
 def calendar_year(o: str, d: str, nights: int, adults: int = 1, stops: str = "any",
-                  currency: str = "ILS", days: int = 365, log=print) -> tuple[list[dict], str]:
+                  currency: str = "ILS", days: int = 365, log=print, cache=None) -> tuple[list[dict], str]:
     """כל השנה הקרובה בחלקים של 61 יום. מחזיר את המחירים ואת היום האחרון שגוגל כבר מוכר.
+
+    cache = תיקייה. כל חלק שנסרק נשמר בה לאותו יום, כך שאם גוגל ביקש הפסקה באמצע,
+    ההרצה הבאה ממשיכה מאותה נקודה ולא שולחת שוב את מה שכבר נסרק.
 
     גוגל מוכר כ-330 יום קדימה (לפי יום החזרה). חלק שהסוף שלו מעבר לזה חוזר כשגיאה (קוד 13),
     בדיוק כמו חסימה. לכן בחלקים המאוחרים קוד 13 = "סוף הטווח": מקצרים את החלק ומנסים שוב.
@@ -152,6 +156,12 @@ def calendar_year(o: str, d: str, nights: int, adults: int = 1, stops: str = "an
     while cur <= final:
         end = min(cur + timedelta(days=MAX_CHUNK - 1), final)
         got, tries = None, 0
+        cf = None
+        if cache is not None:
+            cf = Path(cache) / f"{o}-{d}-{nights}-{adults}-{stops}-{cur}-{date.today()}.part.json"
+            if cf.exists():
+                c = json.loads(cf.read_text())
+                got, end = c["rows"], date.fromisoformat(c["end"])
         while got is None:
             try:
                 got = calendar_chunk(o, d, cur, end, nights, adults, stops, currency)
@@ -171,6 +181,8 @@ def calendar_year(o: str, d: str, nights: int, adults: int = 1, stops: str = "an
                     continue
                 e.partial = rows
                 raise
+        if cf is not None and not cf.exists() and (got or cur <= late):
+            cf.write_text(json.dumps({"rows": got, "end": end.isoformat()}))
         rows.extend(got)
         log(f"  {o}→{d} {nights} לילות: {cur:%d.%m}-{end:%d.%m} · {len(got)} תאריכים")
         if not got and cur > start:
