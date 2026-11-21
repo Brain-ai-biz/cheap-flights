@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""צייד הטיסות: סורק את כל התאריכים שאפשר להזמין בשנה הקרובה ומחזיר את הזולים ביותר.
+"""מצפן הטיסות: סורק את כל התאריכים שאפשר להזמין בשנה הקרובה ומחזיר את הזולים ביותר.
 
 דוגמה:
   python3 hunt.py --from "תל אביב" --to "אתונה" --nights 4 --depart חמישי --return שני --out ~/cheap-flights/athens
@@ -163,7 +163,7 @@ def scan(origin, dests, nights, args, cache_dir):
 
 
 def main():
-    ap = argparse.ArgumentParser(description="צייד הטיסות")
+    ap = argparse.ArgumentParser(description="מצפן הטיסות")
     ap.add_argument("--from", dest="origin", default="TLV")
     ap.add_argument("--to", required=True, help='יעד, כמה יעדים מופרדים בפסיק, או "anywhere" / "לאן שזול"')
     ap.add_argument("--name", help="איך לקרוא ליעד בדף, בעברית (למשל: בנגקוק). רק כשיש יעד אחד")
